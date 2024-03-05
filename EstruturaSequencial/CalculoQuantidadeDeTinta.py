@@ -14,8 +14,8 @@ import math
 print('======= Loja de Tinta =========')
 metros_para_pintar = float(input('Quantos metros² de área a ser pintada? '))
 litros_tinta = metros_para_pintar / 6
-litros_tinta_margem = litros_tinta * 10/100
-print(f'Para pintar {metros_para_pintar:.1f} m² você usaria {litros_tinta:.2f} litros de tinta;') #OUTRA FORMA DE ARREDONDAR PARA CIMA
+litros_tinta_margem = litros_tinta + (litros_tinta * 10/100)
+print(f'Para pintar {metros_para_pintar:.1f} m² você usaria {litros_tinta:.2f} litros de tinta (com 10%: {litros_tinta_margem:.2f});') #OUTRA FORMA DE ARREDONDAR PARA CIMA
 
 def opcaoLatas (litros_tinta_margem):
     litros = litros_tinta_margem
@@ -31,11 +31,18 @@ def opcaoGaloes (litros_tinta_margem):
 
 def opcaoLatasGaloes (litros_tinta_margem):
     litros = litros_tinta_margem
-
+    latas_maximas = math.floor(litros / 18) #ARREDONDO PARA BAIXO ASSIM POSSSO UTILIZAR O RESTO COM GALAO
+    galoes_maximo = math.ceil((litros - (latas_maximas * 18)) / 3.6)
+    preço_latas = latas_maximas * 80.00
+    preço_galoes = galoes_maximo * 25.00
+    return latas_maximas, galoes_maximo, preço_latas, preço_galoes
     
 
-latas, preço_latas = opcaoLatas(litros_tinta)
+latas, preço_latas = opcaoLatas(litros_tinta_margem)
 print(f'Para {latas} lata(s) de 18.0 l o valor fica: R$ {preço_latas:.2f}')
 
-galoes, preço_galoes = opcaoGaloes(litros_tinta)
+galoes, preço_galoes = opcaoGaloes(litros_tinta_margem)
 print(f'Para {galoes} galao(loes) de 3.6 l o valor fica: R$ {preço_galoes:.2f}')
+
+latas_otimizado, galoes_otimizado, preço_latas_otimizadas, preço_galoes_otimizados = opcaoLatasGaloes(litros_tinta_margem)
+print(f'Para {litros_tinta:.2f} l considerando 10% de folga para nao ocorrer o risco de ficar sem tinta ficamos com {litros_tinta_margem:.2f} l\n Assim evitando o disperdício pode ser comprado {latas_otimizado} lata(s) e {galoes_otimizado} galao(loes) pelo valor R$ {preço_latas_otimizadas:.2f} e R$ {preço_galoes_otimizados:.2f} totalizando R$ {(preço_latas_otimizadas + preço_galoes_otimizados):.2f}')

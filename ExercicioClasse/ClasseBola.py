@@ -27,15 +27,17 @@ def main():
             Bola1.trocaCor()
         elif condicional_lasso == 'N':
             while True:
-                    condicional_lasso2 = input('Quer ver a cor da bola? (S = Sim/N = Não)').upper()
+                condicional_lasso2 = input('Quer ver a cor da bola? (S = Sim/N = Não)').upper()
 
-                    if condicional_lasso2 == 'S':
-                        Bola1.mostraCor()
-                        return False
-                    elif condicional_lasso2 == 'N':
-                        return False
-                    else:
-                        print('Informação inválida 2')            
+                if condicional_lasso2 == 'S':
+                    Bola1.mostraCor()
+                    break
+                elif condicional_lasso2 == 'N':
+                    break
+                else:
+                    print('Informação inválida 2')
+                            
+            break    
         else:
             print('Informação inválida 1')
    

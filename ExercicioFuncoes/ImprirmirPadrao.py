@@ -7,6 +7,7 @@
 # para um n informado pelo usuário. 
 # Use uma função que receba um valor n inteiro 
 # e imprima até a n-ésima linha.
+
 numero = int(input('Quer imprimir um padrao até qual linha? '))
 def imprimirAte(numero):
     for contador in range(1,numero + 1):

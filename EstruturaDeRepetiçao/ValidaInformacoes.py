@@ -6,9 +6,15 @@
 # Estado Civil: 's', 'c', 'v', 'd';
 import os
 
+# metodo que retorna a quantidade de caracteres e remove espaçoes em branco da contagem;
 def contaLetras(nome):
-    return len(nome.replace(" ",""))
+    return len(retiraEspacos(nome))
 
+# metodo que retorna o texto sem os espacamento entre as palavras
+def retiraEspacos(texto):
+    return texto.replace(" ","")
+
+# metodo que retorna o nome validado, utilizando o metodo contaLetras() conseguimos ter o numero de letras na string, retornamos o nome informado pelo usuário;
 def verificaNome():
     while True:
         nome = input("Informe um nome (maior que 3 caracteres): ")
@@ -23,6 +29,7 @@ def verificaNome():
     
     return nome
 
+# metodo que verifica a idade, retorna idade apenas se o valor informado for válido
 def verificaIdade():
     while True:
         idade = int(input("Informe uma idade entre 0 e 150: "))
@@ -34,7 +41,8 @@ def verificaIdade():
             print('Idade inválida, tente novamente.')
     
     return idade
-            
+
+# metodo que verifica o salario, menor que 0 invalida, ao contrario ele retorna o valor;            
 def verificaSalario():
     while True:
         salario = float(input('Informe um salário maior que 0: R$'))
@@ -47,9 +55,10 @@ def verificaSalario():
             
     return salario
 
+# metodo que verifica se o primeiro char se é m ou f, retorna o sexo de acordo
 def verificaSexo():
     while True:
-        sexo = input('Informe seu sexo (f/m): ').lower()
+        sexo = retiraEspacos(input('Informe seu sexo (f/m): ').lower())[0]
         
         if sexo == 'm':
             print('Sexo Masculino definido.')
@@ -63,25 +72,19 @@ def verificaSexo():
             print('Não entendi o sexo informado, tente novamente. ')
         
     
-            
-
-
 def verificaEstadoCivil(sexo):
     while True:
-        
-        if sexo == 'Masculino':
-            estado_civil = input('Informe seu estado civil ("s" - solteiro, "c" - casado, "v" - viúvo, "d" - divorciado): ').lower().replace(" ","")
-        else:
-            estado_civil = input('Informe seu estado civil ("s" - solteira, "c" - casada, "v" - viúva, "d" - divorciada): ').lower().replace(" ","")
+        texto_terminal = 'Informe seu estado civil ("s" - solteiro, "c" - casado, "v" - viúvo, "d" - divorciado): ' if sexo == 'Masculino' else 'Informe seu estado civil ("s" - solteira, "c" - casada, "v" - viúva, "d" - divorciada): '
+        estado_civil = retiraEspacos(input(texto_terminal).lower())
         
         match estado_civil:
-            case 's':
+            case 's' | 'solteiro' | 'solteira':
                 return 'Solteir' + ('o' if sexo == 'Masculino' else 'a')
-            case 'c':
+            case 'c' | 'casado' | 'casada':
                 return 'Casad' + ('o' if sexo == 'Masculino' else 'a')
-            case 'v':
+            case 'v' | 'viuvo' | 'viuva':
                 return 'Viúv' + ('o' if sexo == 'Masculino' else 'a')
-            case 'd':
+            case 'd' | 'divorciado' | 'divorciada':
                 return 'Divorciad' + ('o' if sexo == 'Masculino' else 'a')
             case _:
                 print(f'Estado civil {estado_civil} é inválido, tente novamente')

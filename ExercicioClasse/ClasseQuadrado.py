@@ -31,7 +31,7 @@ def main():
             print('Opçao inválida, tente novamente:')
     
     while True:
-        pergunta_lasso = input(f'Gostaria de saber a área do quadrado de lado {Quadrado1.tamanho_do_lado}? ')
+        pergunta_lasso = input(f'Gostaria de saber a área do quadrado de lado {Quadrado1.tamanho_do_lado}? (S/N)')
 
         if pergunta_lasso == 'S':
             area = Quadrado1.calcularArea()
@@ -41,8 +41,6 @@ def main():
             break
         else:
             print('Opçao inválida, tente novamente:')
-
-    
 
 if __name__ == '__main__':
     main()

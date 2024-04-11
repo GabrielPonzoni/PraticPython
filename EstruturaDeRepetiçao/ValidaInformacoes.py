@@ -71,7 +71,7 @@ def verificaSexo():
         else:
             print('Não entendi o sexo informado, tente novamente. ')
         
-    
+
 def verificaEstadoCivil(sexo):
     while True:
         texto_terminal = 'Informe seu estado civil ("s" - solteiro, "c" - casado, "v" - viúvo, "d" - divorciado): ' if sexo == 'Masculino' else 'Informe seu estado civil ("s" - solteira, "c" - casada, "v" - viúva, "d" - divorciada): '

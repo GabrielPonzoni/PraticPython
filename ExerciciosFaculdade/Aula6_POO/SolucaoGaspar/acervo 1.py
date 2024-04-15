@@ -41,7 +41,7 @@ class Obra:
 
     def __init__(self, name:str):
         self.__name = name
-        # self.__lista_de_exemplares: list(Exemplar) = []
+        self.__lista_de_exemplares: list(Exemplar) = []
 
     @property
     def name(self) -> str:
@@ -55,9 +55,9 @@ class Obra:
     def lista_de_exemplares(self) -> list:
         return self.__lista_de_exemplares
 
-    # @lista_de_exemplares.setter
-    # def lista_de_exemplares(self, lista:[]) -> None:
-    #     self.__lista_de_exemplares = lista
+    @lista_de_exemplares.setter
+    def lista_de_exemplares(self, lista:[]) -> None:
+        self.__lista_de_exemplares = lista
 
     def adiciona_exemplar(self, livro:Exemplar) -> None: 
         self.__lista_de_exemplares.append(livro)
@@ -79,8 +79,8 @@ class Acervo:
 
     def __init__(self, name:str):
         self.__name = name
-        # self.__lista_de_obras: list(Obra) = []
-        # self.__lista_de_usuarios: list(Usuario) = []
+        self.__lista_de_obras: list(Obra) = []
+        self.__lista_de_usuarios: list(Usuario) = []
 
     @property
     def name(self) -> str:
@@ -94,9 +94,9 @@ class Acervo:
     def lista_de_obras(self) -> list:
         return self.__lista_de_obras
 
-    # @lista_de_obras.setter
-    # def lista_de_obras(self, lista:[]) -> None:
-    #     self.__lista_de_obras = lista
+    @lista_de_obras.setter
+    def lista_de_obras(self, lista:[]) -> None:
+        self.__lista_de_obras = lista
 
     def adiciona_obra(self, obra:Obra) -> None:
         self.__lista_de_obras.append(obra)
@@ -180,8 +180,8 @@ class Usuario:
 
     def __init__(self, name:str):
         self.__name = name
-        # self.__itens_possuidos: list(Exemplar)
-        # self.__itens_reservados: list(Exemplar)
+        self.__itens_possuidos: list(Exemplar)
+        #self.__itens_reservados: list(Exemplar)
 
     @property
     def name(self) -> str:
@@ -195,9 +195,9 @@ class Usuario:
     def itens_possuidos(self) -> list:
         return self.__itens_possuidos
 
-    # @itens_possuidos.setter
-    # def itens_possuidos(self, lista:[]) -> None:
-    #     self.__lista_de_obras = lista
+    @itens_possuidos.setter
+    def itens_possuidos(self, lista:[]) -> None:
+        self.__lista_de_obras = lista
         
 def main():
 

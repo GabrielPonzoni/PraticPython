@@ -15,3 +15,9 @@
     * Quantos exemplares estão emprestados e quantos estão disponíveis de um determinado livro
 
 > Primeiro sabemos que temos uma Classe Usuário, quais são as caracterísiticas intrísicas a um usuário de uma biblioteca? Nome. 
+
+#### Main
+1. Precisamos pedir para o usuário fornecer as informações do seu usuário
+   1. Nome;
+2. Preciso criar um menu no qual o usuário possa:
+   1. Consultar livros;

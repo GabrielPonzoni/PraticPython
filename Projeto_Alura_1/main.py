@@ -1,5 +1,10 @@
 import os
 
+restaurantes = [{'nome': 'Bella Gula', 'categoria': 'Brasileira', 'ativo': False},
+                {'nome': 'Fratello Tutti', 'categoria': 'Italiana', 'ativo': True},
+                {'nome': 'Cia das Pizzas', 'categoria': 'Pizzas', 'ativo': True},
+                {'nome': 'Koh pee pee', 'categoria': 'Tailandesa', 'ativo': False}]
+
 def exibir_nome_do_programa():
     print("""
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -17,25 +22,64 @@ def exibir_opcoes():
     print('4. Sair\n')
 
 def finalizar_app():
+    exibir_subtitulo('Finalizar app')
+
+def voltar_ao_menu_principal():
+    input('\nDigite uma tecla para voltar ao menu ')
+    main()
+
+def opcao_invalida():
+    print('Opção inválida!\n')
+    voltar_ao_menu_principal()
+
+def exibir_subtitulo(texto):
     os.system('cls')
-    print('Finalizando o app')
+    print(texto)
+    print()
+
+def cadastrar_novo_restaurante():
+    exibir_subtitulo('Cadastro de novos restaurantes')
+    
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    categoria_do_restaurante = input(f'Digite a cadegoria do restaurante {nome_do_restaurante}: ')
+    dicionario_novo_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
+    restaurantes.append(dicionario_novo_restaurante)
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!')
+    
+    voltar_ao_menu_principal()
+
+def listar_restaurantes():
+    exibir_subtitulo('Listando restaurantes')
+
+    for restaurante in restaurantes:
+        nome_restaurante = restaurante['nome']
+        categoria_restaurante = restaurante['categoria']
+        status_restaurante = restaurante['ativo']
+        print(f'- {nome_restaurante} | {categoria_restaurante} | {status_restaurante}')
+
+    voltar_ao_menu_principal()
 
 def escolher_opcao():
-    opcao_escolhida = int(input('Escolha uma opção: '))
+    
+    try:
+        opcao_escolhida = int(input('Escolha uma opção: '))
 
-    match opcao_escolhida:
-        case 1:
-            print('Cadastrar restaurante')
-        case 2:
-            print('Listar restaurantes')
-        case 3:
-            print('Ativar restaurante')         
-        case 4:
-            finalizar_app()
-        case _:
-            print('Não entendi!')
-
+        match opcao_escolhida:
+            case 1:
+                cadastrar_novo_restaurante()
+            case 2:
+                listar_restaurantes()
+            case 3:
+                print('Ativar restaurante')         
+            case 4:
+                finalizar_app()
+            case _:
+                print('Não está dentro das opções!')
+    except:
+        opcao_invalida()
+        
 def main():
+    os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
